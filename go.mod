@@ -1,3 +1,3 @@
-module gotest/fizzbuzz
+module gotest
 
 go 1.19
