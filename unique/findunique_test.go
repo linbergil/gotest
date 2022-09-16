@@ -16,7 +16,7 @@ type testdata struct {
 
 var test = []testdata{
 	{[]int{9, 3, 9, 3, 9, 7, 9}, 7},
-	{[]int{9, 3, 9, 3, 9, 7, 9}, 8},
+	{[]int{9, 3, 9, 8, 9, 7, 9}, 3},
 }
 
 func TestRotation(t *testing.T) {
