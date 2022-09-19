@@ -1,3 +1,4 @@
+// Циклическая ротация
 package rotation
 
 func Rotation(A []int, K int) []int {
