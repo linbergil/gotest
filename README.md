@@ -1,7 +1,12 @@
 # gotest
-fizzbuzz folder - 0 task from go course
 
-rotation folder - 1st task from go course
+rotation - Циклическая ротация
+
+unique - Чудные вхождения в массив
+
+missing - Поиск отсутствующего элемента
+
+consecutive - Проверка последовательности
 
 
-twonums folder - just fun from leetcode
+
