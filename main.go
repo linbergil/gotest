@@ -2,11 +2,13 @@ package main
 
 import (
 	"fmt"
-	"gotest/missing"
+	"gotest/consecutive"
 )
 
 func main() {
 
-	fmt.Print(missing.FindNumber([]int{1, 3, 5, 2, 6, 7, -9, 8, 4}))
+	array := []int{1, 2, 4, 3, 6, 5}
+
+	fmt.Println(consecutive.Consecutive(array))
 
 }

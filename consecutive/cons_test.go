@@ -1,8 +1,8 @@
-package missing_test
+package consecutive_test
 
 import (
 	"fmt"
-	"gotest/missing"
+	"gotest/consecutive"
 	"testing"
 )
 
@@ -17,18 +17,18 @@ type testdata struct {
 // Входной, повторения, ожидания
 
 var test = []testdata{
-	{[]int{1, 2, 4, 3, 6}, 5},
-	{[]int{1, 2, 3, 5}, 4},
-	{[]int{1, 2, 4, 3, -6}, -6},
+	{[]int{1, 2, 4, 3, 6, 5}, 1},
+	{[]int{1, 2, 3, 5}, 0},
+	{[]int{255, 256, 257, 258}, 1},
 }
 
-func TestMissing(t *testing.T) {
+func TestCons(t *testing.T) {
 
 	t.Run(
 		"insert slices", func(t *testing.T) {
 			for _, data := range test {
 				//	Передаём массив и повторения в функцию и записываем результат в переменную
-				v := missing.FindNumber(data.input)
+				v := consecutive.Consecutive(data.input)
 				// Сравниваем вывод с ожиданием
 				if v != data.output {
 					t.Error(
