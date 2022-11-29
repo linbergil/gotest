@@ -1,16 +1,10 @@
 package main
 
-import (
-	"fmt"
-	"gotest/FizzBuzz"
-	"gotest/consecutive"
-)
+import "gotest/solutions"
+
+var URL = "https://kuvaev-ituniversity.vps.elewise.com/tasks/Чудные вхождения в массив"
 
 func main() {
+	solutions.NewService().MakeGet(URL)
 
-	array := []int{1, 2, 4, 3, 6, 5}
-
-	fmt.Println("consecutive", consecutive.Consecutive(array))
-
-	FizzBuzz.Fizzbuzz()
 }
