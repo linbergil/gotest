@@ -1,20 +1,16 @@
 package solutions
 
-type UserName string
-
-type TaskName string
-
-type Result int
-
-type Payload string
-
-type solutionResult struct {
-	Payload []Payload `json:"payload"`
-	Results []Result  `json:"results"`
+type Task struct {
+	Payload []int `json:"payload"`
+	Result  []int `json:"result"`
 }
 
-type Solution struct {
-	UserName UserName       `json:"user_name"`
-	TaskName TaskName       `json:"task_name"`
-	Results  solutionResult `json:"results"`
-}
+const (
+	userName    string = "il_linberg"
+	Port        string = ":1701"
+	SolutionURL string = "kuvaev-ituniversity.vps.elewise.com"
+	Rotation    string = "Циклическая ротация"
+	FindUnique  string = "Чудные вхождения в массив"
+	Cons        string = "Проверка последовательности"
+	Missing     string = "Поиск отсутствующего элемента"
+)

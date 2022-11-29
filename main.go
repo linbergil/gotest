@@ -1,10 +1,23 @@
 package main
 
-import "gotest/solutions"
-
-var URL = "https://kuvaev-ituniversity.vps.elewise.com/tasks/Чудные вхождения в массив"
+import (
+	"fmt"
+	"gotest/solutions"
+	"net/http"
+)
 
 func main() {
-	solutions.NewService().MakeGet(URL)
+	fmt.Println("Live long and prosper")
+	testHandler := func(w http.ResponseWriter, _ *http.Request) {
+		b, _ := solutions.ProcessTask(solutions.Rotation) //воткнул что бы не ругался на не использование
+		//io.WriteString(w, string(b))
+		fmt.Println(b)
+	}
 
+	http.HandleFunc("/status", testHandler)
+
+	err := http.ListenAndServe(solutions.Port, nil)
+	if err != nil {
+		panic(err)
+	}
 }
