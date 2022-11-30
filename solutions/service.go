@@ -2,6 +2,7 @@ package solutions
 
 import (
 	"encoding/json"
+	"fmt"
 	"io"
 	"log"
 	"net/http"
@@ -9,7 +10,7 @@ import (
 
 func ProcessTask(taskName string) ([]byte, error) {
 	//получаем условия для задач
-	var taskCases []json.RawMessage
+	var taskCases [10][]json.RawMessage
 	err := getCases(taskName, taskCases)
 	if err != nil {
 		log.Fatalln(err)
@@ -25,9 +26,9 @@ func ProcessTask(taskName string) ([]byte, error) {
 	return nil, nil
 }
 
-func getCases(taskName string, taskCases []json.RawMessage) error {
+func getCases(taskName string, taskCases [10][]json.RawMessage) error {
 
-	response, err := http.Get("http://" + SolutionURL + "/tasks/" + taskName)
+	response, err := http.Get(fmt.Sprintf("%s/tasks/%s", SolutionURL, taskName))
 	if err != nil {
 		log.Fatalln(err)
 		return err
