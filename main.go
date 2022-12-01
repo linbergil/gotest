@@ -8,16 +8,15 @@ import (
 )
 
 func main() {
+	http.HandleFunc("/task/", Handler)
+	http.HandleFunc("/tasks/", Handler)
 	fmt.Println("Engage!")
-	testHandler := func(w http.ResponseWriter, _ *http.Request) {
-		solutions.ProcessTask(solutions.FindUnique)
-		io.WriteString(w, "я стану хокаге!!!")
-	}
-
-	http.HandleFunc("/status", testHandler)
-
 	err := http.ListenAndServe(solutions.Port, nil)
 	if err != nil {
 		panic(err)
 	}
+}
+
+func Handler(w http.ResponseWriter, r *http.Request) {
+	io.WriteString(w, "я стану хокаге!!!")
 }

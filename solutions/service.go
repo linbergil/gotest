@@ -20,7 +20,7 @@ type taskElement struct {
 	result []int
 }
 
-func ProcessTask(taskName string) ([]byte, error) {
+func processTask(taskName string) ([]byte, error) {
 	//получаем условия для задач
 	var taskCases []json.RawMessage
 	err := getCases(taskName, &taskCases)
@@ -139,12 +139,13 @@ func requestReview(taskName string, taskCases *[]json.RawMessage, taskArray *[10
 		log.Fatalln()
 	}
 
+	//делаем пост запрос на сервис проверки
 	request, err := http.Post(fmt.Sprintf("%s/tasks/solution", SolutionURL), "application/json", bytes.NewBuffer(packedMessage))
 
 	defer request.Body.Close()
 
 	var data []byte
-
+	//если 200 то пытаемся сохранить тело ответа
 	if request.StatusCode != http.StatusOK {
 		data = []byte(request.Status)
 	} else {
