@@ -67,12 +67,19 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 
 		taskName := strings.Split(r.URL.Path, "/")
 		//fmt.Println(taskName[2])
-		answer, err := solutions.ProcessTask(taskName[2])
-		if err != nil {
-			log.Fatalln(err)
+		if taskName[1] == "tasks" {
+			w.WriteHeader(400)
+			w.Write([]byte(fmt.Sprintf("400 Bad Request - %s", r.URL.Path)))
 		}
 
-		w.Write(answer)
+		if taskName[1] == "task" {
+			answer, err := solutions.ProcessTask(taskName[2])
+			if err != nil {
+				log.Fatalln(err)
+			}
+
+			w.Write(answer)
+		}
 
 	}
 
