@@ -20,7 +20,7 @@ type taskElement struct {
 	result []int
 }
 
-func processTask(taskName string) ([]byte, error) {
+func ProcessTask(taskName string) ([]byte, error) {
 	//получаем условия для задач
 	var taskCases []json.RawMessage
 	err := getCases(taskName, &taskCases)
