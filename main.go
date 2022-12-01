@@ -3,15 +3,15 @@ package main
 import (
 	"fmt"
 	"gotest/solutions"
+	"io"
 	"net/http"
 )
 
 func main() {
-	fmt.Println("Live long and prosper")
+	fmt.Println("Engage!")
 	testHandler := func(w http.ResponseWriter, _ *http.Request) {
-		b, _ := solutions.ProcessTask(solutions.Rotation) //воткнул что бы не ругался на не использование
-		//io.WriteString(w, string(b))
-		fmt.Println(b)
+		solutions.ProcessTask(solutions.FindUnique)
+		io.WriteString(w, "я стану хокаге!!!")
 	}
 
 	http.HandleFunc("/status", testHandler)
